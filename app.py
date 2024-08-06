@@ -43,7 +43,7 @@ rename_dict = {
     'HARI_df_s': 'HARI',
     'JAM_df_s': 'JAM',
     'SL_df_s': 'SL',
-    'TRANS. DATE_df_S': 'TRANS. DATE',
+    'TRANS. DATE_df_s': 'TRANS. DATE',
     'Cr PRR': 'Pencairan Renovasi Rumah',
     'Db Sukarela': 'Simpanan Sukarela'
 }
