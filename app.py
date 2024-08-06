@@ -73,7 +73,7 @@ for name, df in {
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
 
-        else:
-            st.error("Pastikan Anda mengunggah kedua file: pivot_simpanan.xlsx dan KDP.xlsx")
+    else:
+        st.error("Pastikan Anda mengunggah kedua file: pivot_simpanan.xlsx dan KDP.xlsx")
 else:
     st.info("Silakan unggah file Excel untuk memulai.")
