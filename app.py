@@ -19,7 +19,13 @@ if uploaded_files:
         df_kdp = dfs['KDP.xlsx']
 
 # Filter KDP
-df_filter_kdp = df_kdp[df_kdp['Cr PRR'] > 0].copy()
+cr_prr_column = [col for col in df_kdp.columns if 'cr prr' in col.lower()]
+if cr_prr_column:
+    df_filter_kdp = df_kdp[df_kdp[cr_prr_column[0]] > 0].copy()
+    st.write("KDP Filter")
+    st.write(df_filter_kdp)
+else:
+    st.error("Column 'Cr PRR' not found in KDP.xlsx. Please check the column names.")
 
 st.write ("KDP Filter")
 st.write(df_filter_kdp)
