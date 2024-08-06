@@ -14,10 +14,9 @@ if uploaded_files:
         df = pd.read_excel(file, engine='openpyxl')  
         dfs[file.name] = df
 
-if 'pivot_simpanan.xlsx' in dfs:
-        df_s = dfs['pivot_simpanan.xlsx']
-if 'KDP.xlsx' in dfs:
-        df_kdp = dfs['KDP.xlsx']
+if 'pivot_simpanan.xlsx' in dfs and 'KDP.xlsx' in dfs:
+    df_s = dfs['pivot_simpanan.xlsx']
+    df_kdp = dfs['KDP.xlsx']
 
 # Filter KDP
 df_filter_kdp = df_kdp[df_kdp['Cr PRR']>0].copy()
@@ -26,7 +25,7 @@ st.write ("KDP Filter")
 st.write(df_filter_kdp)
 
 # Vlookup
-df_s_merged = pd.merge(df_s, df_filter_kdp, on=DUMMY, suffixes=('_s','_kdp'))
+df_s_merged = pd.merge(df_s, df_filter_kdp, on=DUMMY, suffixes=('df_s','df_kdp'))
 df_s_merged['Pencairan Renovasi Rumah x 25%'] = df_s_merged['Cr PRR'] * 0.25
 df_s_merged['Simpanan Sesuai'] = df_s_merged.apply(lambda row: row['Db Sukarela'] >= row['Pencairan Renovasi Rumah x 25%'], axis=1)
 
@@ -73,3 +72,8 @@ for name, df in {
         file_name=name,
         mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
+
+    else:
+        st.error("Pastikan Anda mengunggah kedua file: pivot_simpanan.xlsx dan KDP.xlsx")
+else:
+    st.info("Silakan unggah file Excel untuk memulai.")
