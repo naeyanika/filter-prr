@@ -14,9 +14,9 @@ if uploaded_files:
         df = pd.read_excel(file, engine='openpyxl')  
         dfs[file.name] = df
 
-if 'pivot_simpanan.xlsx' in dfs and 'KDP.xlsx' in dfs:
-    df_s = dfs['pivot_simpanan.xlsx']
-    df_kdp = dfs['KDP.xlsx']
+    if 'pivot_simpanan.xlsx' in dfs and 'KDP.xlsx' in dfs:
+        df_s = dfs['pivot_simpanan.xlsx']
+        df_kdp = dfs['KDP.xlsx']
 
 # Filter KDP
 df_filter_kdp = df_kdp[df_kdp['Cr PRR']>0].copy()
