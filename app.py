@@ -28,20 +28,21 @@ else:
     st.error("Column 'Cr PRR' not found in KDP.xlsx. Please check the column names.")
 
 # Vlookup
-df_s_merged = pd.merge(df_s, df_filter_kdp, on=DUMMY, suffixes=('df_s','df_kdp'))
+merge_column = 'DUMMY'  # Replace with your actual merge column name
+df_s_merged = pd.merge(df_s, df_filter_kdp, on=merge_column, suffixes=('_df_s','_df_kdp'))
 df_s_merged['Pencairan Renovasi Rumah x 25%'] = df_s_merged['Cr PRR'] * 0.25
 df_s_merged['Simpanan Sesuai'] = df_s_merged.apply(lambda row: row['Db Sukarela'] >= row['Pencairan Renovasi Rumah x 25%'], axis=1)
 
-result = df_s_merged[['DUMMY', 'NAMA_s', 'CENTER_s', 'KEL_s', 'HARI_s', 'JAM_s', 'SL_s', 'TRANS. DATE_s', 'Cr PRR', 'Db Sukarela', 'Cr Sukarela', 'Pencairan Renovasi Rumah x 25%', 'Simpanan Sesuai']]
+result = df_s_merged[['DUMMY', 'NAMA_df_s', 'CENTER_df_s', 'KEL_df_s', 'HARI_df_s', 'JAM_df_s', 'SL_df_s', 'TRANS. DATE_s', 'Cr PRR', 'Db Sukarela', 'Cr Sukarela', 'Pencairan Renovasi Rumah x 25%', 'Simpanan Sesuai']]
 
 
 rename_dict = {
-    'NAMA_s': 'NAMA',
-    'CENTER_s': 'CENTER',
-    'KEL_s': 'KEL',
-    'HARI_s': 'HARI',
-    'JAM_s': 'JAM',
-    'SL_s': 'SL',
+    'NAMA_df_s': 'NAMA',
+    'CENTER_df_s': 'CENTER',
+    'KEL_df_s': 'KEL',
+    'HARI_df_s': 'HARI',
+    'JAM_df_s': 'JAM',
+    'SL_df_s': 'SL',
     'Cr PRR': 'Pencairan Renovasi Rumah',
     'Db Sukarela': 'Simpanan Sukarela'
 }
