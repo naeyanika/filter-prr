@@ -19,7 +19,7 @@ if uploaded_files:
         df_kdp = dfs['KDP.xlsx']
 
 # Filter KDP
-df_filter_kdp = df_kdp[df_kdp['Cr PRR']>0].copy()
+df_filter_kdp = df_kdp[df_kdp['Cr PRR'] > 0].copy()
 
 st.write ("KDP Filter")
 st.write(df_filter_kdp)
