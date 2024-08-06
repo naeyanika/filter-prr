@@ -27,9 +27,6 @@ if cr_prr_column:
 else:
     st.error("Column 'Cr PRR' not found in KDP.xlsx. Please check the column names.")
 
-st.write ("KDP Filter")
-st.write(df_filter_kdp)
-
 # Vlookup
 df_s_merged = pd.merge(df_s, df_filter_kdp, on=DUMMY, suffixes=('df_s','df_kdp'))
 df_s_merged['Pencairan Renovasi Rumah x 25%'] = df_s_merged['Cr PRR'] * 0.25
