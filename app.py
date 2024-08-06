@@ -19,7 +19,6 @@ if uploaded_files:
         df_kdp = dfs['KDP.xlsx']
 
 # Filter KDP
-df_na = df_kdp.dropna(subset=['Cr PRR'])
 df_filter_kdp = df_kdp[df_kdp['Cr PRR'] > 0].copy()
 
 st.write ("KDP Filter")
