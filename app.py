@@ -51,7 +51,7 @@ rename_dict = {
 result = result.rename(columns=rename_dict)
 
 desired_order = [
-     'NAMA','CENTER','KELOMPOK','HARI','JAM','SL', 'TRANS. DATE','Pencairan Renovasi Rumah','Simpanan Sukarela','Simpanan Sesuai'
+     'NAMA','CENTER','KEL','HARI','JAM','SL','TRANS. DATE','Pencairan Renovasi Rumah','Simpanan Sukarela','Simpanan Sesuai'
 ]
 
 for col in desired_order:
