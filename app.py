@@ -36,7 +36,10 @@ if uploaded_files:
         df_s_merged['Pencairan Renovasi Rumah x 1%'] = df_s_merged['Cr PRR'] * 0.01
         df_s_merged['Wajib Sesuai'] = df_s_merged.apply(lambda row: row['Db Wajib'] < row['Pencairan Renovasi Rumah x 1%'], axis=1)
 
-        result = df_s_merged[['DUMMY', 'NAMA_df_s', 'CENTER_df_s', 'KEL_df_s', 'HARI_df_s', 'JAM_df_s', 'SL_df_s', 'TRANS. DATE_df_s', 'Cr PRR', 'Db Sukarela', 'Cr Sukarela', 'Db Wajib', 'Cr Wajib', 'Pencairan Renovasi Rumah x 1%', 'Pencairan Renovasi Rumah x 25%', 'Sukarela Sesuai', 'Wajib Sesuai']]
+        df_s_merged['Pencairan Renovasi Rumah x 1% Pensiun'] = df_s_merged['Cr PRR'] * 0.01
+        df_s_merged['Pensiun Sesuai'] = df_s_merged.apply(lambda row: row['Db Pensiun'] < row['Pencairan Renovasi Rumah x 1% Pensiun'], axis=1)
+
+        result = df_s_merged[['DUMMY', 'NAMA_df_s', 'CENTER_df_s', 'KEL_df_s', 'HARI_df_s', 'JAM_df_s', 'SL_df_s', 'TRANS. DATE_df_s', 'Cr PRR', 'Db Sukarela', 'Cr Sukarela', 'Db Wajib', 'Cr Wajib', 'Pencairan Renovasi Rumah x 1%', 'Pencairan Renovasi Rumah x 25%','Pencairan Renovasi Rumah x 1% Pensiun', 'Sukarela Sesuai', 'Wajib Sesuai', 'Pensiun Sesuai']]
 
         rename_dict = {
             'NAMA_df_s': 'NAMA',
@@ -48,13 +51,14 @@ if uploaded_files:
             'TRANS. DATE_df_s': 'TRANS. DATE',
             'Cr PRR': 'Pencairan Renovasi Rumah',
             'Db Sukarela': 'Simpanan Sukarela',
-            'Db Wajib': 'Simpanan Wajib'
+            'Db Wajib': 'Simpanan Wajib',
+            'Db Pensiun': 'Simpanan Pensiun'
         }
 
         result = result.rename(columns=rename_dict)
 
         desired_order = [
-             'NAMA','CENTER','KEL','HARI','JAM','SL','TRANS. DATE','Pencairan Renovasi Rumah', 'Simpanan Wajib', 'Wajib Sesuai', 'Simpanan Sukarela','Sukarela Sesuai'
+             'NAMA','CENTER','KEL','HARI','JAM','SL','TRANS. DATE','Pencairan Renovasi Rumah', 'Simpanan Wajib', 'Wajib Sesuai', 'Simpanan Sukarela','Sukarela Sesuai', 'Simpanan Pensiun', 'Pensiun Sesuai'
         ]
 
         for col in desired_order:
