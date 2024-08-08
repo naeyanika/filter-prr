@@ -32,11 +32,10 @@ merge_column = 'DUMMY'  # Replace with your actual merge column name
 df_s_merged = pd.merge(df_s, df_filter_kdp, on=merge_column, suffixes=('_df_s','_df_kdp'))
 df_s_merged['Pencairan Renovasi Rumah x 25%'] = df_s_merged['Cr PRR'] * 0.25
 df_s_merged['Sukarela Sesuai'] = df_s_merged.apply(lambda row: row['Db Sukarela'] >= row['Pencairan Renovasi Rumah x 25%'], axis=1)
-
 df_s_merged = ['Pencairan Renovasi Rumah x 1%'] = df_s_merged['Cr PRR'] * 0.01
 df_s_merged = ['Wajib Sesuai'] = df_s_merged.apply(lambda row: row['Db Wajib'] < row['Pencairan Renovasi Rumah x 1%'], axis=1)
 
-result = df_s_merged[['DUMMY', 'NAMA_df_s', 'CENTER_df_s', 'KEL_df_s', 'HARI_df_s', 'JAM_df_s', 'SL_df_s', 'TRANS. DATE_df_s', 'Cr PRR', 'Db Sukarela', 'Cr Sukarela', 'Db Wajib', 'Cr Wajib', 'Pencairan Renovasi Rumah x 25%', 'Sukarela Sesuai', 'Wajib Sesuai']]
+result = df_s_merged[['DUMMY', 'NAMA_df_s', 'CENTER_df_s', 'KEL_df_s', 'HARI_df_s', 'JAM_df_s', 'SL_df_s', 'TRANS. DATE_df_s', 'Cr PRR', 'Db Sukarela', 'Cr Sukarela', 'Db Wajib', 'Cr Wajib', 'Pencairan Renovasi Rumah x 1%', 'Pencairan Renovasi Rumah x 25%', 'Sukarela Sesuai', 'Wajib Sesuai']]
 
 
 rename_dict = {
