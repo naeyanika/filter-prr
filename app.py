@@ -77,7 +77,7 @@ if uploaded_files:
 
         result['TRANS. DATE'] = result['TRANS. DATE'].apply(format_date)
 
-        st.write('Hasil Sebelum Filter')
+        st.write('Hasil Sebelum Filter :')
         st.write(result)
 
         filtered_result = result[
