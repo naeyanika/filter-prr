@@ -91,7 +91,7 @@ if uploaded_files:
         # Download links for pivot tables
         for name, df in {
             'Hasil Filter.xlsx': result,
-            'Hasil Filter False': filtered_result
+            'Hasil Filter False.xlsx': filtered_result
         }.items():
             buffer = io.BytesIO()
             with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
