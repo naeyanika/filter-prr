@@ -67,6 +67,16 @@ if uploaded_files:
 
         result = result[desired_order]
 
+        def format_date(date):
+            if pd.notnull(date):
+                try:
+                    return pd.to_datetime(date).strftime('%d/%m/%Y')
+                except:
+                    return date
+            return date
+
+        result['TRANS. DATE'] = result['TRANS. DATE'].apply(format_date)
+
         st.write('Hasil')
         st.write(result)
 
