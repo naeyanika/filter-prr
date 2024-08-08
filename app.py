@@ -77,12 +77,21 @@ if uploaded_files:
 
         result['TRANS. DATE'] = result['TRANS. DATE'].apply(format_date)
 
-        st.write('Hasil')
+        st.write('Hasil Sebelum Filter')
         st.write(result)
+
+        filtered_result = result[
+        (~result['Wajib Sesuai']) | 
+        (~result['Sukarela Sesuai']) | 
+        (~result['Pensiun Sesuai'])
+        ]
+        st.write('Hasil Setelah Filter (Setidaknya satu False):')
+        st.write(filtered_result)
 
         # Download links for pivot tables
         for name, df in {
-            'Hasil Filter.xlsx': result
+            'Hasil Filter.xlsx': result,
+            'Hasil Filter False': filtered_result
         }.items():
             buffer = io.BytesIO()
             with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
