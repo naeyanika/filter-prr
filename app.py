@@ -4,7 +4,11 @@ import numpy as np
 import io
 
 st.title('Aplikasi Filter Pinjaman Renovasi Rumah')
-st.write("""File yang dibutuhkan pivot_simpanan.xlsx dan KDP.xlsx yang sudah di gabung dan vlookup dengan KDP_na""")
+st.write("""File yang dibutuhkan :
+- pivot_simpanan.xlsx
+- KDP.xlsx (sudah di gabungkan dengan KDP_na.xlsx)
+   Jadi, 2 file diatas adalah file yang sudah di olah sebelumnya dengan https://ia-base.vercel.app/ . Jika di olah secara manual, eksekusi file akan error.
+""")
 
 uploaded_files = st.file_uploader("Unggah file Excel", accept_multiple_files=True, type=["xlsx"])
 
